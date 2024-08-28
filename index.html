@@ -1,19 +1,63 @@
-<div class="container"></div>
-.container {
-  display: grid; 
-  grid-template-columns: 10% 10% 10% 10% 10% 10%; 
-  grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%; 
-  gap: 0px 0px; 
-  grid-template-areas: 
-    ". . . . . ."
-    ". . . . . ."
-    ". . . . . ."
-    ". . . . . ."
-    ". . . . . ."
-    ". . . . . ."
-    ". . . . . ."
-    ". . . . . ."
-    ". . . . . ."
-    ". . . . . ."
-    ". . . . . ."; 
-}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Interactive Grid</title>
+  <style>
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-template-rows: repeat(3, 100px);
+      gap: 10px;   
+
+    }
+
+    .grid-item {
+      border: 1px solid   
+ black;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .popup {
+      display: none;
+      position: absolute;
+      background-color: white;
+      border: 1px solid black;
+      padding: 10px;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+    <div class="grid-item">Item 1</div>
+    <div class="grid-item">Item 2</div>
+    <div class="grid-item">Item 3</div>   
+
+    </div>
+
+  <div class="popup">
+    <p>This is the pop-up content.</p>
+    <button>Close</button>
+  </div>
+
+  <script>
+    const gridItems = document.querySelectorAll('.grid-item');
+    const popup = document.querySelector('.popup');
+    const closeButton = popup.querySelector('button');
+
+    gridItems.forEach(item => {
+      item.addEventListener('click', () => {
+        popup.style.display = 'block';
+        // Position the popup relative to the clicked item
+        popup.style.left = item.offsetLeft + 'px';
+        popup.style.top = item.offsetTop + item.offsetHeight + 'px';
+      });
+    });
+
+    closeButton.addEventListener('click', () => {
+      popup.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
