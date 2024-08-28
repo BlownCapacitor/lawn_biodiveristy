@@ -5,15 +5,13 @@
   <style>
     .grid-container {
       display: grid;
-      grid-template-columns: repeat(3, 100px);
-      grid-template-rows: repeat(3, 100px);
-      gap: 10px;   
-
+      grid-template-columns: repeat(7, 1fr);
+      grid-template-rows: repeat(12, 1fr);
+      gap: 0;
     }
 
     .grid-item {
-      border: 1px solid   
- black;
+      border: 1px solid black;
       text-align: center;
       padding: 10px;
     }
@@ -30,10 +28,6 @@
 </head>
 <body>
   <div class="grid-container">
-    <div class="grid-item">Item 1</div>
-    <div class="grid-item">Item 2</div>
-    <div class="grid-item">Item 3</div>   
-
     </div>
 
   <div class="popup">
@@ -42,22 +36,7 @@
   </div>
 
   <script>
-    const gridItems = document.querySelectorAll('.grid-item');
-    const popup = document.querySelector('.popup');
-    const closeButton = popup.querySelector('button');
-
-    gridItems.forEach(item => {
-      item.addEventListener('click', () => {
-        popup.style.display = 'block';
-        // Position the popup relative to the clicked item
-        popup.style.left = item.offsetLeft + 'px';
-        popup.style.top = item.offsetTop + item.offsetHeight + 'px';
-      });
-    });
-
-    closeButton.addEventListener('click', () => {
-      popup.style.display = 'none';
-    });
+    // JavaScript code to populate the grid with items and handle pop-ups
   </script>
 </body>
 </html>
